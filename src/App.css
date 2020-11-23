@@ -1,0 +1,382 @@
+:root {
+  --light-one: linear-gradient(
+    to right bottom,
+    #f4eff0,
+    #f0eaec,
+    #ece6e7,
+    #e8e1e3,
+    #e4dddf
+  );
+
+  --light-two: linear-gradient(
+    to right bottom,
+    #f0eaed,
+    #efe9ec,
+    #ede9eb,
+    #ece8ea,
+    #ebe7e9
+  );
+
+  --light-three: linear-gradient(
+    to right bottom,
+    #f3ecf0,
+    #f2ebef,
+    #f1eaee,
+    #f1e8ec,
+    #f0e7eb
+  );
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  font-size: 1rem;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  transition: 0.4s all;
+}
+
+button:hover {
+  opacity: 0.3;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-image: linear-gradient(
+    to right bottom,
+    #7a3cb4,
+    #af5fce,
+    #d18ba8,
+    #e29568,
+    #e08753
+  );
+}
+
+#calculator-container {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: normal;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  height: 65vh;
+  width: 100vw;
+  border-radius: 5px;
+}
+
+#calculator-grid {
+  min-height: 100%;
+  width: 25.5%;
+  height: 100%;
+  background-color: white;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  gap: 0px 0px;
+  grid-template-areas:
+    "equation equation equation equation"
+    "result result result result"
+    "percent plus-minus clear divide"
+    "seven eight nine multiply"
+    "four five six substract"
+    "one two three add"
+    "zero comma equals equals";
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.equation {
+  color: rgb(230, 153, 123);
+  background-color: rgb(20, 20, 20);
+  border-radius: 5px 5px 0 0;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  grid-area: equation;
+}
+
+.current-operand {
+  background-color: rgb(20, 20, 20);
+  color: rgb(219, 209, 209);
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  grid-area: result;
+}
+
+.data-equation {
+  margin-bottom: 5px;
+  margin-right: 8%;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.data-current-operand {
+  margin-bottom: 10px;
+  margin-right: 8%;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.percent {
+  grid-area: percent;
+  background-color: rgb(228, 222, 222);
+}
+
+.plus-minus {
+  position: relative;
+  grid-area: plus-minus;
+
+  font-weight: 100;
+  font-size: 1.5rem;
+  background-image: linear-gradient(
+    to right bottom,
+    #f0eaed,
+    #efe9ec,
+    #ede9eb,
+    #ece8ea,
+    #ebe7e9
+  );
+}
+
+.plus-minus-sign {
+  font-size: 1.8rem;
+}
+
+.plus-minus-sign::before {
+  position: absolute;
+  font-weight: 100;
+  font-size: 1.2rem;
+  left: 33.5%;
+  content: "+";
+}
+.plus-minus-sign::after {
+  font-weight: 100;
+  position: absolute;
+  right: 35%;
+  content: "-";
+}
+
+.clear {
+  grid-area: clear;
+  background-image: linear-gradient(
+    to right bottom,
+    #f0eaed,
+    #efe9ec,
+    #ede9eb,
+    #ece8ea,
+    #ebe7e9
+  );
+}
+
+.divide {
+  grid-area: divide;
+  color: #fff;
+  background-color: rgb(134, 82, 184);
+}
+
+.multiply {
+  grid-area: multiply;
+  color: #fff;
+  background-color: rgb(132, 71, 201);
+}
+
+.substract {
+  grid-area: substract;
+  font-size: 1.5rem;
+  background-color: rgb(129, 66, 201);
+  color: #fff;
+}
+
+.add {
+  grid-area: add;
+  font-size: 1.5rem;
+  background-color: rgb(129, 58, 211);
+  color: #fff;
+}
+
+.nine {
+  grid-area: nine;
+  background-image: var(--light-three);
+}
+
+.eight {
+  grid-area: eight;
+  background-image: var(--light-two);
+}
+
+.seven {
+  grid-area: seven;
+  background-image: var(--light-one);
+}
+
+.six {
+  grid-area: six;
+  background-image: var(--light-three);
+}
+
+.five {
+  grid-area: five;
+  background-image: var(--light-two);
+}
+
+.four {
+  grid-area: four;
+  background-image: var(--light-one);
+}
+
+.three {
+  grid-area: three;
+  background-image: var(--light-three);
+}
+
+.two {
+  grid-area: two;
+  background-image: var(--light-two);
+}
+
+.one {
+  grid-area: one;
+  background-image: var(--light-one);
+}
+
+.zero {
+  grid-area: zero;
+  background-image: var(--light-one);
+  border-radius: 0 0 0 5px;
+}
+
+.comma {
+  grid-area: comma;
+  font-size: 1.5rem;
+  background-image: var(--light-two);
+}
+
+.equals {
+  font-size: 1.5rem;
+  grid-area: equals;
+  background-color: rgb(207, 48, 136);
+  border-radius: 0 0 5px 0;
+  color: #fff;
+}
+
+.footer {
+  margin-left: 3%;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  margin-bottom: 2%;
+}
+
+.footer-content {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.footer-btn {
+  margin-top: 1%;
+  width: 6%;
+  border-radius: 10px;
+  background-color: white;
+  padding: 5px;
+  font-size: 78%;
+}
+
+.footer-text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 100;
+}
+
+.icon-container {
+  position: relative;
+}
+
+.fa-heart.shadow-icon {
+  position: absolute;
+  left: 20%;
+  top: 25%;
+  color: black;
+  opacity: 0.1;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+  .result {
+    font-size: 1.5rem;
+  }
+  #calculator-grid {
+    min-height: 100%;
+    width: 100%;
+  }
+
+  #calculator-container {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .footer {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 730px) {
+  .result {
+    font-size: 1.5rem;
+  }
+  #calculator-grid {
+    min-height: 100%;
+    width: 55%;
+  }
+
+  .footer-btn {
+    width: 8%;
+  }
+}
+
+@media only screen and (min-width: 731px) and (max-width: 800px) {
+  .result {
+    font-size: 1.5rem;
+  }
+  #calculator-grid {
+    min-height: 100%;
+    width: 45%;
+  }
+
+  .footer-btn {
+    width: 8%;
+  }
+}
+
+@media only screen and (min-width: 801px) and (max-width: 1000px) {
+  .result {
+    font-size: 1.5rem;
+  }
+  #calculator-grid {
+    min-height: 100%;
+    width: 42.5%;
+  }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1140px) {
+  .result {
+    font-size: 1.5rem;
+  }
+  #calculator-grid {
+    min-height: 100%;
+    width: 38.5%;
+  }
+}
